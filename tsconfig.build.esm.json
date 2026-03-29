@@ -8,7 +8,11 @@
     "declarationMap": true,
     "sourceMap": true,
     "module": "ESNext",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules", "src/__tests__"]
+  "exclude": [
+    "node_modules",
+    "src/__tests__"
+  ]
 }

@@ -12,9 +12,14 @@
     "verbatimModuleSyntax": false,
     "esModuleInterop": true,
     "paths": {
-      "whatsapp-rust-bridge": ["./node_modules/whatsapp-rust-bridge/dist/index.d.ts"]
+      "whatsapp-rust-bridge": [
+        "./node_modules/whatsapp-rust-bridge/dist/index.d.ts"
+      ]
     },
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "src/__tests__"]
+  "exclude": [
+    "node_modules",
+    "src/__tests__"
+  ]
 }
