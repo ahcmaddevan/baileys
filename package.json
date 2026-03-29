@@ -1,5 +1,5 @@
 {
-  "name": "@lynovra/baileys",
+  "name": "@lynovratech/baileys",
   "type": "module",
   "version": "7.0.0-rc.9",
   "description": "A WebSockets library for interacting with WhatsApp Web - lynovra fork with JID-first and dual ESM/CJS support",
