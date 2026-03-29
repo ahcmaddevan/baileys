@@ -32,7 +32,8 @@
   "files": [
     "lib/**/*",
     "WAProto/**/*",
-    "engine-requirements.js"
+    "engine-requirements.js",
+    "lib/WAProto/**/*"
   ],
   "scripts": {
     "build:all": "npm run build && npm run build:docs",
