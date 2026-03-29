@@ -1,7 +1,7 @@
 {
   "name": "@lynovratech/baileys",
   "type": "module",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A WebSockets library for interacting with WhatsApp Web - lynovra fork with JID-first and dual ESM/CJS support",
   "keywords": [
     "whatsapp",

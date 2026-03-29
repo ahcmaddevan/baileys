@@ -1,11 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-function getDepth(filePath, baseDir) {
-  const rel = path.relative(baseDir, path.dirname(filePath));
-  return rel === '' ? 0 : rel.split(path.sep).length;
-}
-
 function fixDir(dir, baseDir) {
   const files = fs.readdirSync(dir);
   for(const file of files) {
@@ -15,13 +10,15 @@ function fixDir(dir, baseDir) {
       fixDir(full, baseDir);
     } else if(file.endsWith('.js')) {
       let c = fs.readFileSync(full, 'utf8');
-      if(c.includes("'whatsapp-rust-bridge'") || c.includes('"whatsapp-rust-bridge"')) {
-        const depth = getDepth(full, baseDir);
-        const rel = '../'.repeat(depth) + 'vendor/whatsapp-rust-bridge.js';
-        c = c.replace(/require\(["']whatsapp-rust-bridge["']\)/g, `require("${rel}")`);
-        c = c.replace(/from ["']whatsapp-rust-bridge["']/g, `from "${rel}"`);
+      if(c.includes('whatsapp-rust-bridge')) {
+        const relToVendor = path.relative(
+          path.dirname(full),
+          path.join(baseDir, '..', 'vendor', 'whatsapp-rust-bridge.js')
+        ).replace(/\\/g, '/');
+        c = c.replace(/require\(["'].*?whatsapp-rust-bridge.*?["']\)/g, `require("${relToVendor}")`);
+        c = c.replace(/from ["'].*?whatsapp-rust-bridge.*?["']/g, `from "${relToVendor}"`);
         fs.writeFileSync(full, c);
-        console.log('Fixed:', full);
+        console.log('Fixed:', full, '->', relToVendor);
       }
     }
   }
