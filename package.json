@@ -1,7 +1,7 @@
 {
   "name": "@lynovratech/baileys",
   "type": "module",
-  "version": "7.0.0-rc.9",
+  "version": "1.0.0",
   "description": "A WebSockets library for interacting with WhatsApp Web - lynovra fork with JID-first and dual ESM/CJS support",
   "keywords": [
     "whatsapp",
@@ -38,7 +38,7 @@
     "build:all": "npm run build && npm run build:docs",
     "build:docs": "typedoc",
     "build:esm": "tsc -P tsconfig.build.esm.json && tsc-esm-fix --tsconfig=tsconfig.build.esm.json --ext=.js",
-    "build:cjs": "tsc -P tsconfig.build.cjs.json && node scripts/fix-cjs.js",
+    "build:cjs": "tsc -P tsconfig.build.cjs.json && node scripts/fix-cjs.cjs",
     "build": "npm run build:esm && npm run build:cjs",
     "changelog:last": "conventional-changelog -p angular -r 2",
     "changelog:preview": "conventional-changelog -p angular -u",
@@ -122,5 +122,8 @@
   "packageManager": "yarn@4.9.2",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

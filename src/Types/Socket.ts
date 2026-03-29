@@ -145,7 +145,7 @@ export type SocketConfig = {
 	makeSignalRepository: (
 		auth: SignalAuthState,
 		logger: ILogger,
-		pnToJIDFunc?: (jids: string[]) => Promise<JIDMapping[] | undefined>
+		pnToJIDFunc?: (jids: string[]) => Promise<JIDMapping[] | undefined>,
 		/** @deprecated use pnToJIDFunc */
 		pnToLIDFunc?: (jids: string[]) => Promise<LIDMapping[] | undefined>
 	) => SignalRepositoryWithJIDStore

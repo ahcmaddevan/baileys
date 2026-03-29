@@ -228,9 +228,9 @@ export function decodeMessageNode(stanza: BinaryNode, meId: string, _meLid?: str
 export const decryptMessageNode = (
 	stanza: BinaryNode,
 	meId: string,
-	_meLid?: string,
 	repository: SignalRepositoryWithJIDStore,
-	logger: ILogger
+	logger: ILogger,
+	_meLid?: string
 ) => {
 	const { fullMessage, author, sender } = decodeMessageNode(stanza, meId) // JID-first: no meLid
 	return {

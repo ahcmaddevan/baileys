@@ -1212,7 +1212,7 @@ export const makeChatsSocket = (config: SocketConfig) => {
 		}, 20_000)
 	})
 
-	ev.on('lid-mapping.update', async ({ lid, pn }) => {
+	ev.on('lid-mapping.update', async ({ jid: lid, pn }) => {
 		try {
 			// JID-first: store LID→JID mapping for resolution
 			await signalRepository.jidMapping.storeLIDPNMappings([{ lid, pn }])
