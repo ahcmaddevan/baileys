@@ -1,7 +1,7 @@
 {
   "name": "@lynovratech/baileys",
   "type": "module",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "A WebSockets library for interacting with WhatsApp Web - lynovra fork with JID-first and dual ESM/CJS support",
   "keywords": [
     "whatsapp",
@@ -58,7 +58,8 @@
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.test.ts'",
     "test:e2e": "node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.test-e2e.ts'",
     "update:version": "tsx ./scripts/update-version.ts",
-    "postinstall": "node scripts/patch-rust-bridge.cjs"
+    "postinstall": "node scripts/patch-rust-bridge.cjs",
+    "postbuild": "node scripts/fix-rust-bridge-import.cjs"
   },
   "dependencies": {
     "@cacheable/node-cache": "^1.4.0",
