@@ -1,8 +1,16 @@
-import { LTHashAntiTampering } from 'whatsapp-rust-bridge'
+let _anti: any = null;
 
-/**
- * LT Hash is a summation based hash algorithm that maintains the integrity of a piece of data
- * over a series of mutations. You can add/remove mutations and it'll return a hash equal to
- * if the same series of mutations was made sequentially.
- */
-export const LT_HASH_ANTI_TAMPERING = new LTHashAntiTampering()
+async function getAntiTampering() {
+if(!_anti) {
+const mod = await import('whatsapp-rust-bridge')
+_anti = new mod.LTHashAntiTampering()
+}
+return _anti
+}
+
+export const LT_HASH_ANTI_TAMPERING = {
+subtractThenAdd: async(base: Uint8Array, subtract: Uint8Array[], add: Uint8Array[]): Promise<Uint8Array> => {
+const inst = await getAntiTampering()
+return inst.subtractThenAdd(base, subtract, add)
+}
+}

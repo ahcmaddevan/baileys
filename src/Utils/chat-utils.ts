@@ -100,8 +100,8 @@ const makeLtHashGenerator = ({ indexValueMap, hash }: Pick<LTHashState, 'hash' |
 				subBuffs.push(prevOp.valueMac as Uint8Array)
 			}
 		},
-		finish: () => {
-			const result = LT_HASH_ANTI_TAMPERING.subtractThenAdd(hash, subBuffs, addBuffs)
+		finish: async () => {
+			const result = await LT_HASH_ANTI_TAMPERING.subtractThenAdd(hash, subBuffs, addBuffs)
 
 			return {
 				hash: Buffer.from(result),
